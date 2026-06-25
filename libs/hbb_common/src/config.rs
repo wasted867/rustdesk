@@ -494,7 +494,6 @@ impl Config2 {
         let mut config = Config::load_::<Config2>("2");
         let mut store = false;
         // 拒绝局域网发现
-        //config.options.entry("enable-lan-discovery".to_string()).or_insert("N".to_string());
         config.options.insert("enable-lan-discovery".to_string(), "N".to_string());
         config.store();
         if let Some(mut socks) = config.socks {
@@ -2148,11 +2147,6 @@ pub struct LocalConfig {
 impl LocalConfig {
     fn load() -> LocalConfig {
         let mut config = Config::load_::<LocalConfig>("_local");
-        //// 使用 entry 和 or_insert，只有当本地配置里【没有】这个键时，才插入默认值
-        //config.options.entry("theme".to_string()).or_insert("dark".to_string());
-        //config.options.entry("enable-ipv6-punch".to_string()).or_insert("Y".to_string());
-        //config.options.entry("enable-udp-punch".to_string()).or_insert("Y".to_string());
-        //config.options.entry("enable-check-update".to_string()).or_insert("N".to_string());
         config.options.insert("theme".to_string(), "dark".to_string());
         config.options.insert("enable-ipv6-punch".to_string(), "Y".to_string());
         config.options.insert("enable-udp-punch".to_string(), "Y".to_string());
